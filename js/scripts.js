@@ -18,6 +18,34 @@ var generateReading = function(readingArray) {
 };
 
 
+// var addImg = function(imageLink) {
+//   // inserts the images of the randomly selected cards into the card front divs
+//   var divInsert = document.createElement('div');
+//   divInsert.className = 'card-image-holder';
+//
+//   divInsert.innerHTML = imageLink;
+//
+//   document.getElementById('card' + globalIndex).appendChild(divInsert);
+//   globalIndex++;
+//   console.log(globalIndex);
+// }
+// //
+// var deal = function(readingArray, deckArray) {
+//   // links the cards dealt to positions on the page
+//   var cardLocationID = 1;
+//   readingArray.forEach(function(cards){1
+//     var image = cards[0];
+//     var imageLink = '<img src="' + image + '" />';
+//     addImg(imageLink);
+//     console.log(imageLink);
+//     console.log("card ID is " + cardLocationID);
+//     cardLocationID++;
+//   })
+// };
+
+
+
+
 var globalIndex = 0;
 var addImg = function(imageLink) {
   // inserts the images of the randomly selected cards into the card front divs
@@ -30,13 +58,14 @@ var addImg = function(imageLink) {
 }
 
 var globalIndex2 = 0;
-// cardContainer is $(this).parent()
-var insertImage = function(cardContainer, imageLink) {
+var insertImage = function(focusID, imageLink) {
   // inserts an image into the clicked div
   var divInsert = document.createElement('div');
   divInsert.className = 'card-image-holder';
   divInsert.innerHTML = imageLink;
-  document.getElementById(cardContainer).appendChild(divInsert);
+  console.log(divInsert);
+  console.log("Card container is" + focusID);
+  document.getElementById(focusID).appendChild(divInsert);
   globalIndex2++;
   console.log(globalIndex2);
 };
@@ -60,12 +89,22 @@ $(document).ready(function() {
   deal(readingArray, deckArray);
 
   // deal(readingArray, deckArray);
-  $(".backs").click(function() {
-    var focus = $(this);
-    focus.find('img').hide();
-    insertImage(focus, readingArray[globalIndex2][0]);
+  $(".backs").one("click", function() {
+    // if(globalIndex2 < 5)
+    // {
+    $(this).find('img').hide();
+    var focusID = $(this).attr('id');
+    console.log(focusID);
+    console.log("focus is" + focusID);
+    insertImage(focusID, readingArray[globalIndex2][0]);
+    // }
 
   });
+
+  $("#tarot-deck").click(function(){
+    location.reload();
+  });
+
 });
 
 
