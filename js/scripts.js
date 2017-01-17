@@ -16,39 +16,54 @@ var generateReading = function(readingArray) {
     console.log(deckArrayDuplicate);
   }
 };
+
+
 var globalIndex = 0;
 var addImg = function(imageLink) {
   // inserts the images of the randomly selected cards into the card front divs
   var divInsert = document.createElement('div');
   divInsert.className = 'card-image-holder';
-
   divInsert.innerHTML = imageLink;
-
   document.getElementById('card' + globalIndex).appendChild(divInsert);
   globalIndex++;
   console.log(globalIndex);
 }
+
+var globalIndex2 = 0;
+// cardContainer is $(this).parent()
+var insertImage = function(cardContainer, imageLink) {
+  // inserts an image into the clicked div
+  var divInsert = document.createElement('div');
+  divInsert.className = 'card-image-holder';
+  divInsert.innerHTML = imageLink;
+  document.getElementById(cardContainer).appendChild(divInsert);
+  globalIndex2++;
+  console.log(globalIndex2);
+};
 
 var deal = function(readingArray, deckArray) {
   // links the cards dealt to positions on the page
   var cardLocationID = 1;
   readingArray.forEach(function(cards){1
     var image = cards[0];
-    var imageLink = '<img src="' + image + '" />';
-    addImg(imageLink);
-    console.log(imageLink);
+    cards[0] = '<img src="' + image + '" />';
+    console.log(cards[0]);
     console.log("card ID is " + cardLocationID);
     cardLocationID++;
   })
 };
 
+
 $(document).ready(function() {
   generateReading(readingArray);
   console.log(readingArray);
   deal(readingArray, deckArray);
+
   // deal(readingArray, deckArray);
   $(".backs").click(function() {
-    $(this).hide();
+    var focus = $(this);
+    focus.find('img').hide();
+    insertImage(focus, readingArray[globalIndex2][0]);
 
   });
 });
