@@ -1,38 +1,18 @@
+.jumbotron {
+  background-color: #008080;
+}
+
+body {
+  background-color: #FFA07A;
+}
+
 .card-backs {
-  text-align: center;
-}
-
-.card-fronts {
-  display: none;
-}
-
-#test0 {
-  border: 2px solid red;
-  text-align: center;
-}
-
-#test1 {
-  border: 2px solid yellow;
-  text-align: center;
-}
-
-#test2 {
-  border: 2px solid orange;
-  text-align: center;
-}
-
-#test3 {
-  border: 2px solid blue;
-  text-align: center;
-}
-
-#test4 {
-  border: 2px solid green;
   text-align: center;
 }
 
 #top {
   padding-bottom: 30px;
+  text-align: center;
 }
 
 #middle {
@@ -44,10 +24,14 @@
   padding-top: 30px;
 }
 
-#tarot-deck {
+#tarot-deck-main {
   width: 210px;
   height: 350px;
   text-align: center;
   margin-left: 40px;
   margin-right: 40px;
+}
+
+.definitions {
+  display: none;
 }
